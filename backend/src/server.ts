@@ -12,7 +12,7 @@ let latestPrices: any = {};
 // جلب أسعار العملات من exchangerate.host
 async function fetchCurrencyRates() {
   const res = await axios.get('https://api.exchangerate.host/latest?base=USD&symbols=EUR,EGP,SAR');
-  return res.data.rates;
+  return (res.data as { rates: Record<string, number> }).rates;
 }
 
 // جلب أسعار الذهب والفضة من goldapi.io
@@ -21,8 +21,8 @@ async function fetchMetals() {
   const gold = await axios.get('https://www.goldapi.io/api/XAU/USD', { headers });
   const silver = await axios.get('https://www.goldapi.io/api/XAG/USD', { headers });
   return {
-    gold: gold.data.price,
-    silver: silver.data.price,
+    gold: (gold.data as { price: number }).price,
+    silver: (silver.data as { price: number }).price,
   };
 }
 
