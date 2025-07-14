@@ -1,3 +1,36 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities; 
+@tailwind utilities;
+
+/* Glassmorphism & Animated Gradient */
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradientMove 8s ease-in-out infinite;
+}
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+body {
+  font-family: var(--font-inter), var(--font-cairo), sans-serif;
+}
+
+html[lang="ar"] body {
+  font-family: var(--font-cairo), var(--font-inter), sans-serif;
+}
+
+/* Glass card effect */
+.glass-card {
+  background: rgba(255,255,255,0.7);
+  box-shadow: 0 8px 32px 0 rgba(31,38,135,0.18);
+  backdrop-filter: blur(8px);
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255,255,255,0.18);
+}
+.dark .glass-card {
+  background: rgba(24,24,32,0.7);
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.28);
+  border: 1px solid rgba(80,80,80,0.18);
+} 
